@@ -1,0 +1,60 @@
+
+INSERT INTO employee (id, first_name, last_name, city) VALUES
+(1, 'John', 'Doe', 'New York'),
+(2, 'Jane', 'Smith', 'Los Angeles'),
+(3, 'Michael', 'Johnson', 'Chicago'),
+(4, 'Emily', 'Davis', 'Houston'),
+(5, 'David', 'Brown', 'Phoenix'),
+(6, 'Emma', 'Wilson', 'Philadelphia'),
+(7, 'Olivia', 'Taylor', 'San Antonio');
+
+
+
+
+-- Drop the table if it exists
+DROP TABLE IF EXISTS employee_expertise;
+
+
+--SELECT @@FOREIGN_KEYS_CHECKS
+
+-- Disable foreign key checks
+SET GLOBAL FOREIGN_KEY_CHECKS = 0;
+
+
+CREATE TABLE IF NOT EXISTS employee_expertise (
+    employee_id INT,
+    expertise_id BIGINT,
+    PRIMARY KEY (employee_id, expertise_id),
+    FOREIGN KEY (employee_id) REFERENCES employee(id),
+    FOREIGN KEY (expertise_id) REFERENCES expertise(id)
+) ENGINE = InnoDB;
+
+-- Enable foreign key checks
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+
+SET GLOBAL  FOREGIN_KEY_CHECKS = 
+
+INSERT INTO employee_expertise (employee_id, expertise_id)
+VALUES
+(1, 1),   -- John Doe knows Java
+(1, 2),   -- John Doe knows Python
+(1, 4),   -- John Doe knows JavaScript
+(2, 2),   -- Jane Smith knows Python
+(2, 3),   -- Jane Smith knows C++
+(3, 1),   -- Michael Johnson knows Java
+(3, 4),   -- Michael Johnson knows JavaScript
+(4, 5),   -- Emily Davis knows SQL
+(5, 4),   -- David Brown knows JavaScript
+(6, 6),   -- Emma Wilson knows Ruby
+(7, 1),   -- Olivia Taylor knows Java
+(7, 3);   -- Olivia Taylor knows C++
+
+
+
+
+
+
+
