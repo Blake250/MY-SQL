@@ -1,3 +1,11 @@
+CREATE TABLE employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT_NULL,
+      last_name VARCHAR(50) NOT_NULL,
+      city VARCHAR(50) NOT_NULL,
+  
+);
+
 
 INSERT INTO employee (id, first_name, last_name, city) VALUES
 (1, 'John', 'Doe', 'New York'),
@@ -9,10 +17,20 @@ INSERT INTO employee (id, first_name, last_name, city) VALUES
 (7, 'Olivia', 'Taylor', 'San Antonio');
 
 
+CREATE TABLE expertise (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    language VARCHAR(255) NOT NULL
+);
 
-
--- Drop the table if it exists
-DROP TABLE IF EXISTS employee_expertise;
+-- Insert values into the expertise table
+INSERT INTO expertise (language) VALUES
+('Java'),
+('Python'),
+('C++'),
+('JavaScript'),
+('SQL'),
+('PHP'),
+('Ruby');
 
 
 --SELECT @@FOREIGN_KEYS_CHECKS
@@ -33,10 +51,6 @@ CREATE TABLE IF NOT EXISTS employee_expertise (
 SET FOREIGN_KEY_CHECKS = 1;
 
 
-
-
-SET GLOBAL  FOREGIN_KEY_CHECKS = 
-
 INSERT INTO employee_expertise (employee_id, expertise_id)
 VALUES
 (1, 1),   -- John Doe knows Java
@@ -51,6 +65,21 @@ VALUES
 (6, 6),   -- Emma Wilson knows Ruby
 (7, 1),   -- Olivia Taylor knows Java
 (7, 3);   -- Olivia Taylor knows C++
+
+
+
+
+
+-- Drop the table if it exists
+--DROP TABLE IF EXISTS employee_expertise;
+
+
+
+
+
+
+SET GLOBAL  FOREGIN_KEY_CHECKS = 
+
 
 
 
